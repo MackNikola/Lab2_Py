@@ -1,0 +1,116 @@
+Task 1
+def is_palindrom(num):
+    num_list = [int(d) for d in str(num)]
+    return num_list == list(reversed(num_list))
+
+print(is_palindrom(12321))
+print(is_palindrom(9454))
+print(is_palindrom(45654))
+print(is_palindrom(45455))
+
+---------------------------------------
+
+Task 2
+
+\First var\
+def divisible(numbers, divisor):
+    return [num for num in numbers if num % divisor == 0]
+
+num_list = [455, 976, 66, 9, 108, 11, 904]
+print('Делится на 2:')
+print(divisible(num_list, 2))
+print('Делится на 3:')
+print(divisible(num_list, 3))
+print('Делится на 5:')
+print(divisible(num_list, 5))
+
+
+\Second var\
+def divisible_dict(numbers, divisors):
+    div_nums = {}
+    for divisor in divisors:
+        div_nums[divisor] = [num for num in numbers if num % divisor == 0]
+    
+    return div_nums
+
+div_nums = divisible_dict([3434, 34, 672, 333, 90, 550, 85, 3], [2, 3, 5])
+for divisor in div_nums.keys():
+    print(f'Делятся на {divisor}: ')
+    print(div_nums[divisor])
+
+
+\Third\
+def divisible_list(numbers):
+    div_2 = [num for num in numbers if num % 2 == 0]
+    div_3 = [num for num in numbers if num % 3 == 0]
+    div_5 = [num for num in numbers if num % 5 == 0]
+    
+    return div_2, div_3, div_5
+
+num_list = [23234, 555, 5723, 9, 7, 98]
+div_2, div_3, div_5 = divisible_list(num_list)
+print('Делится на 2: ')
+print(div_2)
+print('Делится на 3: ')
+print(div_3)
+print('Делится на 5: ')
+print(div_5)
+
+---------------------------------------
+
+Task 3
+    
+def reverse(num):
+    num_str = [d for d in str(num)]
+    num_str.reverse()
+    if num < 0:
+        num_str.insert(0, num_str.pop())
+    
+    return int(''.join(num_str))
+
+print(reverse(4321))
+print(reverse(-453))
+
+---------------------------------------
+
+Task 4
+
+def newton_square_root(number, eps=0.001):
+    a = float(number)
+    prev_x = number
+    
+    while True:
+        new_x = 0.5 * (prev_x + a / prev_x)
+        if abs(new_x - prev_x) < eps:
+            break
+        
+        prev_x = new_x
+        
+    return new_x
+    
+print(newton_square_root(563))
+print(newton_square_root(23))
+
+---------------------------------------
+
+Task 5
+
+def is_prime_num(x):
+  
+    if x > 0:
+        if x < 100000:
+            result = (x == 2 or x % 2 != 0)
+            if result:
+                for i in range(3, int(x**0.5), 2):
+                    if x % i == 0:
+                        return False
+            return result
+        else:
+            print('Значение больше 100.000')
+    else:
+        print('Значение меньше 0')
+
+
+print(is_prime_num(1009))
+print(is_prime_num(-1009))
+print(is_prime_num(1000009))
